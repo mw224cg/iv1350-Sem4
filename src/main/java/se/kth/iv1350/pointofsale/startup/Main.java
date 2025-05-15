@@ -4,6 +4,7 @@
  */
 package se.kth.iv1350.pointofsale.startup;
 
+import java.io.IOException;
 import se.kth.iv1350.pointofsale.view.View;
 import se.kth.iv1350.pointofsale.integration.ExternalInventorySystem;
 import se.kth.iv1350.pointofsale.integration.ExternalAccountingSystem;
@@ -31,8 +32,15 @@ public class Main {
         
         Controller controller = new Controller(accounting, inventory, discounts, printer);
         
-        View view = new View(controller);
-        view.runHardcodedSaleProcess();
+        try{
+            View view = new View(controller);
+            view.runHardcodedSaleProcess();
+        }
+        catch(IOException exc){
+            System.out.println("Unable to start program.");
+            exc.printStackTrace();
+        }
+        
     }
     
 }

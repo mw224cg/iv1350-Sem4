@@ -11,9 +11,21 @@ package se.kth.iv1350.pointofsale.integration;
 public class ItemNotFoundException extends Exception{
     private final int missingItemID;
     
-    public ItemNotFoundException(int itemID){
-        super("Item with Item ID: " + itemID + " not found in the inventory");
-        this.missingItemID = itemID;
+    /**
+     * Creates a new instance with a message specifying 
+     * the itemID that is not in the inventory.
+     * @param missingItemID        The itemID not found in the inventory.
+     */
+    public ItemNotFoundException(int missingItemID){
+        super("Item with Item ID: " + missingItemID+ " not found in the inventory");
+        this.missingItemID = missingItemID;
     }
-    
+
+    /**
+     * 
+     * @return      The itemID not found in the inventory.
+     */
+    public int getMissingItemID(){
+        return this.missingItemID;
+    }
 }

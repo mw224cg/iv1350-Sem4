@@ -33,7 +33,7 @@ public class ExternalInventorySystemTest {
     }
     
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws ItemNotFoundException, DataBaseFailureException{
         inventorySystem = new ExternalInventorySystem();
         cucumber = inventorySystem.getItemDescription(1234);
     }
@@ -45,7 +45,7 @@ public class ExternalInventorySystemTest {
     }
 
     @Test
-    public void testGetItemDescriptionValidID() {
+    public void testGetItemDescriptionValidID() throws ItemNotFoundException, DataBaseFailureException{
         ItemDTO expResult = cucumber;
         ItemDTO result = inventorySystem.getItemDescription(1234);
         
@@ -53,10 +53,36 @@ public class ExternalInventorySystemTest {
     }
 
     @Test
-    public void testGetItemDescriptionInvalidID() {
-        ItemDTO itemRetrieved = inventorySystem.getItemDescription(9999);
-        assertNull(itemRetrieved, "Invalid ID should return null");
+    public void testGetItemDescriptionInvalidIDThrowsItemNotFoundException() {
+        int invalidID = 9999;
         
+        try{
+            inventorySystem.getItemDescription(invalidID);
+            fail("Invalid item ID does not generate ItemNotFoundException");
+        }
+        catch(ItemNotFoundException exc){
+            assertTrue((exc.getMissingItemID() == invalidID), "Exception message should contain the missing Item ID."
+                    + " Actual message: " +exc.getMessage());
+        }
+        catch(Exception exc){
+            fail("Wrong type of exception thrown: " + exc);
+        }
+    }
+    
+    @Test
+    public void testDbFailIDThrowsDatabaseFailureException(){
+        int dbFailID = 8008;
+        try {
+            inventorySystem.getItemDescription(dbFailID);
+            fail("The itemID: " +dbFailID + " should generate DataBaseFailureException");
+        } catch (DataBaseFailureException exc) {
+            assertTrue(exc.getMessage().contains("database"),
+                    "Exception message should indicate failure of database. Actual message: "
+            + exc.getMessage());
+        }
+        catch(Exception exc){
+            fail("Wrong type of exception thrown: " + exc);
+        }
     }
     
     @Test
@@ -79,7 +105,7 @@ public class ExternalInventorySystemTest {
     }
     
     @Test
-    public void testUpdateInventoryMultipleItems() {
+    public void testUpdateInventoryMultipleItems()throws ItemNotFoundException, DataBaseFailureException{
         ItemDTO milk = inventorySystem.getItemDescription(1111);
         ItemDTO banana = inventorySystem.getItemDescription(4444);
         

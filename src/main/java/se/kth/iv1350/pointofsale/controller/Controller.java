@@ -4,6 +4,7 @@
  */
 package se.kth.iv1350.pointofsale.controller;
 
+import se.kth.iv1350.pointofsale.integration.DataBaseFailureException;
 import se.kth.iv1350.pointofsale.integration.DiscountDatabase;
 import se.kth.iv1350.pointofsale.integration.ExternalAccountingSystem;
 import se.kth.iv1350.pointofsale.integration.ExternalInventorySystem;
@@ -58,14 +59,17 @@ public class Controller {
      * @return                    A DTO describing the current state of the sale
      * @throws ItemNotFoundException        Thrown if the itemID is not found in
      *                                      the inventory
+     * @throws SystemOperationFailureException Thrown if it can't perform the operation
+     *                                         for any other reason than the ID not existing.
      */
-    public SaleDTO scanItem(int itemID)throws ItemNotFoundException{
-        ItemDTO itemDTO = inventorySystem.getItemDescription(itemID);
-        
-        sale.addItem(itemDTO);
-        
-        SaleDTO currentSaleDTO = sale.getSaleDTO();
-        return currentSaleDTO;
+    public SaleDTO scanItem(int itemID)throws ItemNotFoundException, SystemOperationFailureException{
+        try {
+            ItemDTO itemDTO = inventorySystem.getItemDescription(itemID);
+            sale.addItem(itemDTO);
+            return sale.getSaleDTO();
+        } catch (DataBaseFailureException exc) {
+            throw new SystemOperationFailureException("Could not reach inventory database", exc);
+        }
     }
     /**
      * After scanning an item lets user add an amount of the same item

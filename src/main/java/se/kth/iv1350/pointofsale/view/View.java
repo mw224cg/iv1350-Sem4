@@ -4,12 +4,16 @@
  */
 package se.kth.iv1350.pointofsale.view;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import se.kth.iv1350.pointofsale.controller.Controller;
+import se.kth.iv1350.pointofsale.controller.SystemOperationFailureException;
 import se.kth.iv1350.pointofsale.model.SaleDTO;
 import se.kth.iv1350.pointofsale.integration.ItemDTO;
 import se.kth.iv1350.pointofsale.integration.ItemNotFoundException;
 import se.kth.iv1350.pointofsale.model.SoldItem;
 import se.kth.iv1350.pointofsale.model.Receipt;
+import se.kth.iv1350.pointofsale.util.ErrorFileLogHandler;
 /**
  * Placeholder for the real view. Contains hardcoded calls to the system
  * operations in the controller.
@@ -17,15 +21,22 @@ import se.kth.iv1350.pointofsale.model.Receipt;
  */
 public class View {
     private Controller controller;
+    private ErrorMessageHandler errorMessageHandler;
+    private ErrorFileLogHandler errorLogger;
+    
     private static final int ITEM_ID_NOT_IN_INVENTORY = 99999;
     private static final int COCA_COLA_ITEM_ID = 5555;
+    private static final int CONNECTION_ERROR = 8008;
     
     /**
      * Creates a new instance of the view
      * @param controller    The controller that is used for all operations
+     * @throws IOException  If unable to open file for logging.
      */
-    public View(Controller controller){
+    public View(Controller controller)throws IOException{
         this.controller = controller;
+        this.errorMessageHandler = new ErrorMessageHandler();
+        this.errorLogger = new ErrorFileLogHandler();
     }
     
     /**
@@ -35,6 +46,7 @@ public class View {
     public void runHardcodedSaleProcess(){
         startSale();
         scanItem(ITEM_ID_NOT_IN_INVENTORY);
+        scanItem(CONNECTION_ERROR);
         scanItem(COCA_COLA_ITEM_ID);
         enterQuantity(4);
         endSale();
@@ -54,8 +66,16 @@ public class View {
             displayItemInfo(currentSaleInfo);
             displayTotal(currentSaleInfo);
         }
-        catch(ItemNotFoundException e){
-            System.out.println("Error: " +e.getMessage());
+        catch(ItemNotFoundException exc){
+            errorMessageHandler.showErrorMsg("Item ID: " + exc.getMissingItemID() + " not found in inventory");
+        }
+        catch(SystemOperationFailureException exc){
+            errorMessageHandler.showErrorMsg("Lost connection to inventory database. Please try again...");
+            errorLogger.log(exc);
+        }
+        catch(Exception exc){
+            errorMessageHandler.showErrorMsg("System operation failed. Please try again...");
+            errorLogger.log(exc);
         }
     }
     

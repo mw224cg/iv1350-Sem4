@@ -6,7 +6,6 @@ package se.kth.iv1350.pointofsale.util;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import  java.io.FilterWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

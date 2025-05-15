@@ -13,7 +13,7 @@ import se.kth.iv1350.pointofsale.model.SoldItem;
  * 
  */
 public class ExternalInventorySystem {
-    private List<InventoryItem> inventory = new ArrayList<>();
+    private final List<InventoryItem> inventory = new ArrayList<>();
     
     /**
     * Creates an instance of the Inventory system and fills inventory with items 
@@ -39,7 +39,10 @@ public class ExternalInventorySystem {
      * @throws ItemNotFoundException    Thrown if the itemID doesn't
      *                                  exist in the inventory
      */
-    public ItemDTO getItemDescription(int itemID)throws ItemNotFoundException{
+    public ItemDTO getItemDescription(int itemID)throws ItemNotFoundException, DataBaseFailureException{
+        if(itemID == 8008){
+            throw new DataBaseFailureException("Inventory database can't be reached, check connection and try again...");
+        }
         for(InventoryItem invItem : inventory){
             if(invItem.getItem().matchesItemID(itemID)){
                 return invItem.getItem();

@@ -5,13 +5,19 @@
 package se.kth.iv1350.pointofsale.controller;
 
 /**
+ *Thrown when a system operation cant be fulfilled by the controller.
  *
- * @author Marcus
  */
 public class SystemOperationFailureException extends Exception{
     
-    public SystemOperationFailureException(Exception cause){
-        super("Failed to perform system operation", cause);
+    /**
+     * Creates a new instance representing the error described in the specified
+     * message.
+     * @param msg       A message that describes the error
+     * @param cause     The exception that caused the system operation to fail.
+     */
+    public SystemOperationFailureException(String msg, Exception cause){
+        super(msg, cause);
     }
     
 }
