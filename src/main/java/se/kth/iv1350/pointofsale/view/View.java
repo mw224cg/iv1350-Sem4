@@ -14,6 +14,7 @@ import se.kth.iv1350.pointofsale.integration.ItemNotFoundException;
 import se.kth.iv1350.pointofsale.model.SoldItem;
 import se.kth.iv1350.pointofsale.model.Receipt;
 import se.kth.iv1350.pointofsale.util.ErrorFileLogHandler;
+import se.kth.iv1350.pointofsale.util.TotalRevenueFileOutput;
 /**
  * Placeholder for the real view. Contains hardcoded calls to the system
  * operations in the controller.
@@ -37,6 +38,8 @@ public class View {
         this.controller = controller;
         this.errorMessageHandler = new ErrorMessageHandler();
         this.errorLogger = new ErrorFileLogHandler();
+        controller.addRevenueObserver(new TotalRevenueView());
+        controller.addRevenueObserver(new TotalRevenueFileOutput());
     }
     
     /**
@@ -104,7 +107,7 @@ public class View {
      * Displays the current sale information.
      * @param currentSaleInfo   Contains information about the current sale
      */
-    public void displayItemInfo(SaleDTO currentSaleInfo){
+    private void displayItemInfo(SaleDTO currentSaleInfo){
         SoldItem currentSoldItem = currentSaleInfo.getLastSoldItem();
         ItemDTO currentItem = currentSoldItem.getItemDTO();
         
@@ -124,6 +127,7 @@ public class View {
     private void pay(double amount){
         Receipt receipt = controller.pay(amount);
         displayReceipt(receipt);
+        
     }
     
     private void displayReceipt(Receipt receipt){

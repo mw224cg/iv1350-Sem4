@@ -133,6 +133,30 @@ public class SaleTest {
         assertEquals(expResult, result, "Wrong quantity of scanned items recorded");
     }
     
+    @Test
+    public void testMultipleOfSameItemHasCorrectPriceAfterAdjustQty() {
+        saleInstanceToTest.addItem(item);
+        saleInstanceToTest.adjustQuantityOfLastItem(4);
+        SaleDTO saleDTO = saleInstanceToTest.getSaleDTO();
+        
+        double expResult = 40;
+        double result = saleDTO.getTotalPrice();
+        
+        assertEquals(expResult, result,"Price differs from expected price");
+    }
+    
+    @Test
+    public void testAddConsecutiveItemsHasCorrectPrice(){
+        saleInstanceToTest.addItem(item);
+        saleInstanceToTest.addItem(item);
+        saleInstanceToTest.addItem(item);
+        SaleDTO saleDTO = saleInstanceToTest.getSaleDTO();
+        
+        double expResult = 30;
+        double result = saleDTO.getTotalPrice();
+        
+        assertEquals(expResult, result, "Price differs from expcted price");
+    }
     
     
     @Test

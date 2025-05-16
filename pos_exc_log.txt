@@ -18,3 +18,93 @@ Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inven
 	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
 	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:67)
 	... 3 more
+15 maj 2025 21:39:56Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:71)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:65)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:49)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:67)
+	... 3 more
+16 maj 2025 22:34:16Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:68)
+	... 3 more
+16 maj 2025 23:07:43Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:14:28Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:14:48Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:27:09Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:35:41Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:36:17Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more
+16 maj 2025 23:46:08Could not reach inventory database
+se.kth.iv1350.pointofsale.controller.SystemOperationFailureException: Could not reach inventory database
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:76)
+	at se.kth.iv1350.pointofsale.view.View.scanItem(View.java:68)
+	at se.kth.iv1350.pointofsale.view.View.runHardcodedSaleProcess(View.java:52)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:37)
+Caused by: se.kth.iv1350.pointofsale.integration.DataBaseFailureException: Inventory database can't be reached, check connection and try again...
+	at se.kth.iv1350.pointofsale.integration.ExternalInventorySystem.getItemDescription(ExternalInventorySystem.java:44)
+	at se.kth.iv1350.pointofsale.controller.Controller.scanItem(Controller.java:72)
+	... 3 more

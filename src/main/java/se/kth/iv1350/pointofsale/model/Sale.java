@@ -13,10 +13,11 @@ import se.kth.iv1350.pointofsale.integration.ItemDTO;
  * 
  */
 public class Sale {
+    private List<SoldItem> soldItemsList;
+    private List<RevenueObserver> revenueObservers = new ArrayList<>();
     private LocalTime timeOfSale;
     private double currentVAT;
     private double currentPrice;
-    private List<SoldItem> soldItemsList;
     private double discountAmount;
     private final double CONVERT_TO_PERCENT = 0.01;
     
@@ -78,13 +79,17 @@ public class Sale {
         lastItem.addToQuantitySold(quantityToAdd);
         
         adjustVAT(quantityToAdd, lastItem.getItemDTO());
-        
+        adjustPrice(quantityToAdd, lastItem.getItemDTO());
     }
     
     private void adjustVAT(int quantityToAdd, ItemDTO itemDTO){
         double ItemVATRate = itemDTO.getVAT()*CONVERT_TO_PERCENT;
         currentVAT += itemDTO.getPrice()* ItemVATRate * quantityToAdd;
         
+    }
+    
+    private void adjustPrice(int quantityToAdd, ItemDTO itemDTO){
+        currentPrice += itemDTO.getPrice()*quantityToAdd;
     }
     
     /**
@@ -116,6 +121,8 @@ public class Sale {
     Payment payment = new Payment(amount);
     SaleDTO saleDTO = getSaleDTO();
     Receipt receipt = new Receipt(saleDTO, payment);
+    notifyRevenueObservers();
+    
     return receipt;
     }
     
@@ -126,6 +133,33 @@ public class Sale {
     public void applyDiscount(double discountAmount){
     currentPrice = currentPrice - discountAmount;
     this.discountAmount = discountAmount;
+    }
+    
+    /**
+     * Adds an observer to the list of observers
+     * @param observer      An instance of a class implementing the RevenueObserver interface.
+     */
+    private void addRevenueObserver(RevenueObserver observer){
+        revenueObservers.add(observer);
+    }
+    
+    /**
+     * Adds a list of observers to the list of observers in sale.
+     * @param observers     A list of observers implementing RevenueObserver interface
+     */
+    public void addRevenueObservers(List<RevenueObserver> observers){
+        for(RevenueObserver observer : observers){
+            addRevenueObserver(observer);
+        }
+    }
+    
+    /**
+     * Notifies observers of the class about the current cost of the sale.
+     */
+    private void notifyRevenueObservers(){
+        for(RevenueObserver observer : revenueObservers){
+            observer.newRevenue(currentPrice);
+        }
     }
     
 }

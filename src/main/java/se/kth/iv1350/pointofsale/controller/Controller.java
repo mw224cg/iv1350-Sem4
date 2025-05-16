@@ -4,6 +4,8 @@
  */
 package se.kth.iv1350.pointofsale.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import se.kth.iv1350.pointofsale.integration.DataBaseFailureException;
 import se.kth.iv1350.pointofsale.integration.DiscountDatabase;
 import se.kth.iv1350.pointofsale.integration.ExternalAccountingSystem;
@@ -15,6 +17,7 @@ import se.kth.iv1350.pointofsale.model.Register;
 import se.kth.iv1350.pointofsale.model.Sale;
 import se.kth.iv1350.pointofsale.model.SaleDTO;
 import se.kth.iv1350.pointofsale.model.Receipt;
+import se.kth.iv1350.pointofsale.model.RevenueObserver;
 
 
 /**
@@ -29,6 +32,7 @@ public class Controller {
     private Printer printer;
     private Register register;
     private Sale sale;
+    private List<RevenueObserver> revenueObservers = new ArrayList<>();
     
     /**
      * Creates an instance of the controller.
@@ -50,6 +54,7 @@ public class Controller {
      */
     public void startSale(){
         sale = new Sale();
+        sale.addRevenueObservers(revenueObservers);
     }
     
     /**
@@ -118,6 +123,14 @@ public class Controller {
         SaleDTO saleDTOAfterDiscount = sale.getSaleDTO();
         
         return saleDTOAfterDiscount;   
+    }
+    
+    /**
+     * Adds an observer to be notified about the total revenue since the start of the program.
+     * @param observer      A class implementing the RevenueObserver interface
+     */
+    public void addRevenueObserver(RevenueObserver observer){
+        revenueObservers.add(observer);
     }
 }
 

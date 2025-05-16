@@ -39,7 +39,7 @@ public class ExternalInventorySystem {
      * @throws ItemNotFoundException    Thrown if the itemID doesn't
      *                                  exist in the inventory
      */
-    public ItemDTO getItemDescription(int itemID)throws ItemNotFoundException, DataBaseFailureException{
+    public ItemDTO getItemDescription(int itemID)throws ItemNotFoundException{
         if(itemID == 8008){
             throw new DataBaseFailureException("Inventory database can't be reached, check connection and try again...");
         }
