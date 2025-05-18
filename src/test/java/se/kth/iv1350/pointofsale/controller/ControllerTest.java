@@ -40,9 +40,9 @@ public class ControllerTest {
     
     @BeforeEach
     public void setUp() {
-        ExternalInventorySystem inventorySystem = new ExternalInventorySystem();
-        ExternalAccountingSystem accountingSystem = new ExternalAccountingSystem();
-        DiscountDatabase discountDatabase = new DiscountDatabase();
+        ExternalInventorySystem inventorySystem = ExternalInventorySystem.getExternalInventorySystem();
+        ExternalAccountingSystem accountingSystem = ExternalAccountingSystem.getExternalAccountingSystem();
+        DiscountDatabase discountDatabase = DiscountDatabase.getDiscountDatabase();
         Printer printer = new Printer();
         controller = new Controller(accountingSystem, inventorySystem, discountDatabase, printer);
         controller.startSale();

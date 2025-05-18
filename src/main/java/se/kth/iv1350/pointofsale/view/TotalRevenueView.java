@@ -11,10 +11,23 @@ import se.kth.iv1350.pointofsale.model.RevenueObserver;
  */
 public class TotalRevenueView implements RevenueObserver{
     private double totalRevenue = 0;
+    private static final TotalRevenueView TOTAL_REVENUE_VIEW = new TotalRevenueView();
+    
+    private TotalRevenueView(){
+        
+    }
+    
+    public static TotalRevenueView getTotalRevenueView(){
+        return TOTAL_REVENUE_VIEW;
+    }
+    
+    
     
     @Override
     public void newRevenue(double revenue){
         totalRevenue += revenue;
-        System.out.println("Total revenue since program start: "+ totalRevenue + " SEK");
+        System.out.println("-----------TOTAL-REVENUE-----------------");
+        System.out.printf("Total revenue since program start: %.2f SEK %n", revenue);
+        System.out.println("-----------------------------------------\n");
     }
 }

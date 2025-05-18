@@ -25,9 +25,9 @@ public class Main {
      * @param args      The program doesn't take any commandline parameters.
      */
     public static void main(String[] args){
-        ExternalInventorySystem inventory = new ExternalInventorySystem();
-        ExternalAccountingSystem accounting = new ExternalAccountingSystem();
-        DiscountDatabase discounts = new DiscountDatabase();
+        ExternalInventorySystem inventory = ExternalInventorySystem.getExternalInventorySystem();
+        ExternalAccountingSystem accounting = ExternalAccountingSystem.getExternalAccountingSystem();
+        DiscountDatabase discounts = DiscountDatabase.getDiscountDatabase();
         Printer printer = new Printer();
         
         Controller controller = new Controller(accounting, inventory, discounts, printer);

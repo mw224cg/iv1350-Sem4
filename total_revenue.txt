@@ -1,1 +1,37 @@
-Total revenue: 47.849999999999994 SEK
+
+
+-------------New program start------------
+18 maj 2025 17:46:24--New total revenue registered: 38,28 SEK
+18 maj 2025 17:46:24--New total revenue registered: 86,13 SEK
+
+-------------New program start------------
+18 maj 2025 17:54:26--New total revenue registered: 38,28 SEK
+18 maj 2025 17:54:26--New total revenue registered: 86,13 SEK
+
+-------------New program start------------
+18 maj 2025 17:54:42--New total revenue registered: -9,57 SEK
+18 maj 2025 17:54:42--New total revenue registered: 38,28 SEK
+
+-------------New program start------------
+18 maj 2025 17:57:27--New total revenue registered: 44,66 SEK
+18 maj 2025 17:57:27--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+18 maj 2025 18:00:09--New total revenue registered: 44,66 SEK
+18 maj 2025 18:00:09--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+18 maj 2025 18:01:07--New total revenue registered: 44,66 SEK
+18 maj 2025 18:01:07--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+18 maj 2025 18:02:35--New total revenue registered: 44,66 SEK
+18 maj 2025 18:02:35--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+18 maj 2025 18:05:52--New total revenue registered: 44,66 SEK
+18 maj 2025 18:05:52--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+18 maj 2025 18:09:43--New total revenue registered: 44,66 SEK
+18 maj 2025 18:09:43--New total revenue registered: 92,51 SEK

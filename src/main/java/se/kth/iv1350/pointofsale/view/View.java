@@ -27,6 +27,7 @@ public class View {
     
     private static final int ITEM_ID_NOT_IN_INVENTORY = 99999;
     private static final int COCA_COLA_ITEM_ID = 5555;
+    private static final int MILK = 1111;
     private static final int CONNECTION_ERROR = 8008;
     
     /**
@@ -38,7 +39,7 @@ public class View {
         this.controller = controller;
         this.errorMessageHandler = new ErrorMessageHandler();
         this.errorLogger = new ErrorFileLogHandler();
-        controller.addRevenueObserver(new TotalRevenueView());
+        controller.addRevenueObserver(TotalRevenueView.getTotalRevenueView());
         controller.addRevenueObserver(new TotalRevenueFileOutput());
     }
     
@@ -55,11 +56,17 @@ public class View {
         endSale();
         requestDiscount(123456);
         pay(500);
+        
+        startSale();
+        scanItem(MILK);
+        enterQuantity(3);
+        endSale();
+        pay(300);
     }
     
     private void startSale(){
         controller.startSale();
-        System.out.println("New Sale Started...");
+        System.out.println("New Sale Started...\n");
     }
     
     private void scanItem(int itemID){
@@ -92,13 +99,14 @@ public class View {
     
     private void endSale(){
         SaleDTO endSaleInfo = controller.endSale();
-        
+        System.out.println("--------END SALE---------------");
         System.out.println("Total price & VAT for purchase:");
         displayTotal(endSaleInfo);
     }
     
     private void requestDiscount(int customerID){
         SaleDTO saleInfoAfterDiscount = controller.requestDiscount(customerID);
+        System.out.println("-----------DISCOUNT REQUEST------------------");
         System.out.println("New Total after discount:");
         displayTotal(saleInfoAfterDiscount);
     }
@@ -113,15 +121,15 @@ public class View {
         
         System.out.println("Item ID: " + currentItem.getItemID());
         System.out.println("Item name: " + currentItem.getName());
-        System.out.println("Item cost: " + currentItem.getPrice() + "kr");
-        System.out.println("Item VAT: " + currentItem.getVAT() + "%");
+        System.out.printf("Item cost: %.2f SEK%n", currentItem.getPrice());
+        System.out.printf("Item VAT: %.2f SEK%n", currentItem.getVAT());
         System.out.println("Quantity of item: " + currentSoldItem.getQuantitySold());
     }
     
     private void displayTotal(SaleDTO currentSaleInfo){
         System.out.println();
-        System.out.println("Total cost: " + currentSaleInfo.getTotalPrice() + "kr");
-        System.out.println("Total VAT: " + currentSaleInfo.getVAT() + "kr\n");
+        System.out.printf("Total cost: %.2f SEK%n", currentSaleInfo.getTotalPrice());
+        System.out.printf("Total VAT: %.2f SEK%n", currentSaleInfo.getVAT());
     }
     
     private void pay(double amount){
@@ -147,7 +155,7 @@ public class View {
         System.out.printf("Total VAT: %.2f kr%n", receipt.getTotalVAT());
         System.out.printf("Total cost: %.2f kr%n", receipt.getTotalPrice());
         System.out.printf("Total discount for sale: %.2f kr %n", receipt.getDiscountAmount());
-        System.out.println("-------------------");
+        System.out.println("-------------------\n");
     }
     
 }

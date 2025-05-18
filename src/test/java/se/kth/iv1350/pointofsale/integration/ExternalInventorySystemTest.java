@@ -34,7 +34,7 @@ public class ExternalInventorySystemTest {
     
     @BeforeEach
     public void setUp() throws ItemNotFoundException, DataBaseFailureException{
-        inventorySystem = new ExternalInventorySystem();
+        inventorySystem = ExternalInventorySystem.getExternalInventorySystem();
         cucumber = inventorySystem.getItemDescription(1234);
     }
     

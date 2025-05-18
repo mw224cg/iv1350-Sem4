@@ -14,13 +14,18 @@ import se.kth.iv1350.pointofsale.model.SoldItem;
  */
 public class ExternalInventorySystem {
     private final List<InventoryItem> inventory = new ArrayList<>();
+    private static final ExternalInventorySystem EXTERNAL_INVENTORY_SYSTEM = new ExternalInventorySystem();
     
     /**
     * Creates an instance of the Inventory system and fills inventory with items 
     * and quantity of each item.
     */
-    public ExternalInventorySystem(){
+    private ExternalInventorySystem(){
         addItems();
+    }
+    
+    public static ExternalInventorySystem getExternalInventorySystem(){
+        return EXTERNAL_INVENTORY_SYSTEM;
     }
     
     private void addItems(){

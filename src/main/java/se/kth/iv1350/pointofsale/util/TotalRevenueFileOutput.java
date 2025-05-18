@@ -8,25 +8,48 @@ import se.kth.iv1350.pointofsale.model.RevenueObserver;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
- *
- * @author Marcus
+ * This class appends a file with information about the total revenue since program start whenever a sale is made.
+ * 
  */
 public class TotalRevenueFileOutput implements RevenueObserver{
     private static final String REVENUE_FILE = "total_revenue.txt";
     private double totalRevenue =0;
+    private PrintWriter writer;
+    
+    public TotalRevenueFileOutput(){
+        try {
+            this.writer = new PrintWriter(new FileWriter(REVENUE_FILE,true));
+            writer.println();
+            writer.println("-------------New program start------------");
+        } catch (IOException exc) {
+            System.out.println("Could not open revenue file: " + exc.getMessage());
+        }
+    }
     
     @Override
     public void newRevenue(double revenue){
         totalRevenue += revenue;
-        
-        try (PrintWriter writer = new PrintWriter(new FileWriter(REVENUE_FILE, false))) {
-            writer.println("Total revenue: " + totalRevenue + " SEK");
-        } catch (IOException e) {
-            System.out.println("Could not write revenue to file: " + e.getMessage());
-        }
-        
+        writer.println(buildString(totalRevenue));
+        writer.flush();
     }
     
+    private String createTime(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+        return now.format(formatter);
+    }
+    
+    private String buildString(double totalRevenue){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(createTime());
+        stringBuilder.append("--New total revenue registered: ");
+        stringBuilder.append(String.format("%.2f", totalRevenue).replace(".", ":"));
+        stringBuilder.append(" SEK");
+        return stringBuilder.toString();
+    }
 }

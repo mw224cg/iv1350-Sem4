@@ -13,12 +13,20 @@ import se.kth.iv1350.pointofsale.model.Receipt;
  */
 public class ExternalAccountingSystem {
     private List<Receipt> receipts;
+    private static final ExternalAccountingSystem EXTERNAL_ACCOUNTING_SYSTEM = new ExternalAccountingSystem();
     
     /**
      * Creates a new instance of the accounting system.
      */
-    public ExternalAccountingSystem(){
+    private ExternalAccountingSystem(){
         this.receipts = new ArrayList<>();
+    }
+    
+    /**
+     * @return      The only instance of this singleton.
+     */
+    public static ExternalAccountingSystem getExternalAccountingSystem(){
+        return EXTERNAL_ACCOUNTING_SYSTEM;
     }
     
     /**

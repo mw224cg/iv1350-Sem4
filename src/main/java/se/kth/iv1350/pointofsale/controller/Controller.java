@@ -36,9 +36,9 @@ public class Controller {
     
     /**
      * Creates an instance of the controller.
-     * @param accounting
-     * @param inventory
-     * @param discounts 
+     * @param accounting        The External Accounting System
+     * @param inventory         The External Inventory System
+     * @param discounts         The External Discount Database
      */
     public Controller(ExternalAccountingSystem accounting, ExternalInventorySystem inventory, DiscountDatabase discounts, Printer printer){
         this.accountingSystem = accounting;
