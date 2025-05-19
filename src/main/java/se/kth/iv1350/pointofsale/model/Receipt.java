@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package se.kth.iv1350.pointofsale.model;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ import java.util.List;
 public class Receipt {
     private double totalPrice;
     private double totalVAT;
-    private LocalTime time;
+    private LocalDateTime time;
     private List<SoldItem> itemsList;
     private double amountPaid;
     private double change;
@@ -48,7 +48,7 @@ public class Receipt {
         return totalVAT;
     }
     
-    public LocalTime getTime(){
+    public LocalDateTime getTime(){
         return time;
     }
     

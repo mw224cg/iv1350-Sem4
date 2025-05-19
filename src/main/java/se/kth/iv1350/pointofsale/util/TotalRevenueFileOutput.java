@@ -38,15 +38,9 @@ public class TotalRevenueFileOutput implements RevenueObserver{
         writer.flush();
     }
     
-    private String createTime(){
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-        return now.format(formatter);
-    }
-    
     private String buildString(double totalRevenue){
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(createTime());
+        stringBuilder.append(SweDateTimeFormatter.getCurrentDateTime());
         stringBuilder.append("--New total revenue registered: ");
         stringBuilder.append(String.format("%.2f", totalRevenue).replace(".", ":"));
         stringBuilder.append(" SEK");

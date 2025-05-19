@@ -31,17 +31,9 @@ public class ErrorFileLogHandler {
         Exception exception = (Exception) exc;
         
         StringBuilder logMsgBuilder = new StringBuilder();
-        logMsgBuilder.append(createTime());
+        logMsgBuilder.append(SweDateTimeFormatter.getCurrentDateTime());
         logMsgBuilder.append(exception.getMessage());
         logFile.println(logMsgBuilder);
         exception.printStackTrace(logFile);
     }
-    
-    private String createTime() {
-        Locale locale = new Locale("sv", "SE");
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).localizedBy(locale);
-        LocalDateTime now = LocalDateTime.now();
-        return now.format(formatter);
-    }
-    
 }

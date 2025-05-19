@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package se.kth.iv1350.pointofsale.model;
-import se.kth.iv1350.pointofsale.integration.DiscountDTO;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
  */
 
 public class SaleDTO {
-    private final LocalTime time;
+    private final LocalDateTime time;
     private final double vat;
     private final double totalPrice;
     private final List<SoldItem> soldItemsList;
@@ -27,7 +26,7 @@ public class SaleDTO {
      * @param totalPrice        Total cost/price for the sale
      * @param discountAmount    Discount deducted from sale
      */
-    public SaleDTO(List<SoldItem> soldItems, LocalTime time, double vat, double totalPrice, double discountAmount) {
+    public SaleDTO(List<SoldItem> soldItems, LocalDateTime time, double vat, double totalPrice, double discountAmount) {
         this.soldItemsList = soldItems;
         this.time = time;
         this.vat = vat;
@@ -54,7 +53,7 @@ public class SaleDTO {
         return soldItemsList.get(soldItemsList.size()-1);
     }
     
-    public LocalTime getTime(){
+    public LocalDateTime getTime(){
         return time;
     }
     

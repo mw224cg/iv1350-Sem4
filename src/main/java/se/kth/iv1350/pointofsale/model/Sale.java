@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package se.kth.iv1350.pointofsale.model;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import se.kth.iv1350.pointofsale.integration.ItemDTO;
 public class Sale {
     private List<SoldItem> soldItemsList;
     private List<RevenueObserver> revenueObservers = new ArrayList<>();
-    private LocalTime timeOfSale;
+    private LocalDateTime timeOfSale;
     private double currentVAT;
     private double currentPrice;
     private double discountAmount;
@@ -30,7 +31,7 @@ public class Sale {
     }
     
     private void setTimeOfSale(){
-        this.timeOfSale = LocalTime.now();
+        this.timeOfSale = LocalDateTime.now();
     }
     
     /**

@@ -5,7 +5,6 @@
 package se.kth.iv1350.pointofsale.view;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import se.kth.iv1350.pointofsale.controller.Controller;
 import se.kth.iv1350.pointofsale.controller.SystemOperationFailureException;
 import se.kth.iv1350.pointofsale.model.SaleDTO;
@@ -14,6 +13,7 @@ import se.kth.iv1350.pointofsale.integration.ItemNotFoundException;
 import se.kth.iv1350.pointofsale.model.SoldItem;
 import se.kth.iv1350.pointofsale.model.Receipt;
 import se.kth.iv1350.pointofsale.util.ErrorFileLogHandler;
+import se.kth.iv1350.pointofsale.util.SweDateTimeFormatter;
 import se.kth.iv1350.pointofsale.util.TotalRevenueFileOutput;
 /**
  * Placeholder for the real view. Contains hardcoded calls to the system
@@ -140,7 +140,7 @@ public class View {
     
     private void displayReceipt(Receipt receipt){
         System.out.println("-----RECEIPT------\n");
-        System.out.println("Time of sale: " + receipt.getTime());
+        System.out.println("Time of sale: " + SweDateTimeFormatter.formatDateTime(receipt.getTime()));
         
         for(SoldItem item : receipt.getSoldItems()){
             String name = item.getItemDTO().getName();

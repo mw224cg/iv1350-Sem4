@@ -35,3 +35,11 @@
 -------------New program start------------
 18 maj 2025 18:09:43--New total revenue registered: 44,66 SEK
 18 maj 2025 18:09:43--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+19 maj 2025 20:22:39--New total revenue registered: 44,66 SEK
+19 maj 2025 20:22:39--New total revenue registered: 92,51 SEK
+
+-------------New program start------------
+19 maj 2025 20:50:17--New total revenue registered: 44,66 SEK
+19 maj 2025 20:50:17--New total revenue registered: 92,51 SEK
