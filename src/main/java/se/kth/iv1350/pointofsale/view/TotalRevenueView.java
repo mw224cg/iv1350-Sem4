@@ -27,7 +27,7 @@ public class TotalRevenueView implements RevenueObserver{
     public void newRevenue(double revenue){
         totalRevenue += revenue;
         System.out.println("-----------TOTAL-REVENUE-----------------");
-        System.out.printf("Total revenue since program start: %.2f SEK %n", revenue);
+        System.out.printf("Total revenue since program start: %.2f SEK %n", totalRevenue);
         System.out.println("-----------------------------------------\n");
     }
 }
